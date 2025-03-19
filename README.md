@@ -1,7 +1,7 @@
 # Directory Structure
 
  directory follows Domain-Driven Design (DDD) using Nuxt layers
-
+preview link: https://dahsboard-omega.vercel.app/en/
 example for the directories
 
 root/
