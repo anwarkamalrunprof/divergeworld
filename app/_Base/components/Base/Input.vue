@@ -39,7 +39,7 @@ const isInputDisabled = ref(props.disabled)
 
 watch(
   () => props.disabled,
-  (newValue:boolean) => {
+  (newValue: boolean) => {
     isInputDisabled.value = newValue
   },
 )
@@ -99,14 +99,13 @@ defineExpose({
 
 <style scoped>
   input {
-  @apply rounded-md border placeholder:text-secondary-500 text-300 w-full p-3    bg-secondary-300 bg-opacity-20   disabled:hover:!border-secondary-300 ;
+  @apply rounded-md border placeholder:text-secondary-500 dark:placeholder:text-white/40 text-300 w-full p-3   h-[48px] bg-secondary-300 bg-opacity-20   disabled:hover:!border-secondary-300  text-black dark:text-white/80;
 }
 input:focus,
 input:focus-within {
-  @apply outline-primary-400 border dark:border-primary-400 dark:outline-none;
+  @apply outline-primary-400 border dark:border-primary-400 dark:outline-none bg-white/15;
 }
 .error {
   @apply border border-error;
 }
-
 </style>

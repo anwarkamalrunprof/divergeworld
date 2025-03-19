@@ -1,6 +1,6 @@
-# SecureVet Directory Structure
+# Directory Structure
 
-SecureVet directory follows Domain-Driven Design (DDD) using Nuxt layers
+ directory follows Domain-Driven Design (DDD) using Nuxt layers
 
 example for the directories
 
@@ -48,14 +48,14 @@ root/
 ## features
 
 [*]- Project archtichtre [feature driven] and configurations
-[ ]- Base reusable components [Buttons , Inputs, DropDowns, Modals, Typography]
-[ ]- Localizations [AR, En]
-[ ]- Moods [Dark ,Light]
-[ ]- Auth system implementation using sessions for more security ['/auth' : public route to login ]
-[ ]- Roles system ["Owner", "Administrator" , "Employee" , "user"]
-[ ]- RBAC to mange roles permissions in server routes and UI
-[ ]- '/users' : authorized server route Api call to retrieve users info with pagination and filter fields [GET ,POST ,PUT ,Delete ,GET:/id]
-[ ]-unit test using Jest
+[*]- Base reusable components [Buttons , Inputs, DropDowns, Modals, Typography]
+[*]- Localizations [AR, En]
+[*]- Moods [Dark ,Light]
+[*]- Auth system implementation using cookie  ['/auth' : public route to login ,'/users' : need Admin or Employee role to enter ]
+[*]- Roles system [ "Admin" , "Employee" , "user"]
+[*]- RBAC to mange roles permissions  UI
+[*]- '/users' :  server route Api call to retrieve users info with pagination and filter fields [GET ,POST ,PUT ,Delete ,GET:/id]
+[ ]-unit test using Jest no time available
 
 ### custom composables usage
 
@@ -64,6 +64,12 @@ root/
 #### useLocaleN() => used to return absolute route name without localization { '/en/' or '/ar' }  useLocaleN()
 
 #### useApi() => used to make crude operation as top layer of request or as intercept (pre middleware or wrapper) for Async call you can add handleError or whiteList errors that user can see and track the other errors using sentry or any package you want
+
+you need to copy .env.example and create your own .even
+
+using aws s3 to upload images you can you cloudnairy or uploadthing just modify server/api/upload.ts and .env API key to match new keys
+
+using no sql mongodb clusters to store the data
 
 ##### i get this error in 16/3/2025 "index.js:5"
 

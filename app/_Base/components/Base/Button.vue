@@ -42,11 +42,11 @@ interface ButtonProps {
   keyUp?: (event: KeyboardEvent) => void
 }
 
-const baseClasses = ' center gap-1 rounded-md select-none border-2  border-transparent'
+const baseClasses = ' center gap-1 rounded-md select-none border-2  border-transparent  '
 
 const variantClasses = computed<string>(() => {
   const variantMap: Record<ButtonVariant, string> = {
-    [ButtonVariant.PRIMARY]: 'bg-primary-500 text-white hover:bg-primary-400 duration-300',
+    [ButtonVariant.PRIMARY]: 'bg-primary-500 bg-gradient-to-bl from-primary-500 to-primary-400 text-white hover:to-primary-500 duration-300 ',
     [ButtonVariant.OUTLINE_PRIMARY]:
     '!border-primary-400 text-primary-500 hover:text-primary-500 hover:!border-primary-400 duration-300',
     [ButtonVariant.SECONDARY]:
@@ -120,7 +120,6 @@ const buttonClasses = computed(() => [
       <Icon
         name="eos-icons:loading"
         size="24"
-        class="animate-spin"
       />
       <span v-if="props.loadingText">{{ props.loadingText }}</span>
     </template>

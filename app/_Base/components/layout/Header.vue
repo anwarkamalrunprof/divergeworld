@@ -1,38 +1,26 @@
 <script setup lang="ts">
-const modalActive = ref( false )
-const toggleModal = () => {
-	modalActive.value = !modalActive.value
-}
-
+const currentUser = useCookie('currentUser')
+const { signout } = useAuth()
 </script>
+
 <template>
-	<header class="bg-secondary-300 bg-opacity-20 relative border-b"
-		:class=" { 'bg-gray-600/10': useLocaleN() === 'index' } ">
-		<div class="py-3 md:grid grid-cols-3 flex justify-between gap-8 container items-center">
-			<div class="gap-8 flex items-center max-md:hidden">
-				<ModeSwitcher />
-				<LangSwitcher />
-			</div>
-			<div class="max-md:w-fit">
-				<Logo />
-			</div>
-			
-			<div class="flex items-center justify-end gap-3 md:gap-8 shrink-0">
-				<button @click=" toggleModal " class="md:hidden ltr:rotate-180">
-					<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"
-						xmlns="http://www.w3.org/2000/svg">
-						<path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2"
-							stroke-linecap="round" stroke-linejoin="round" />
-					</svg>
-				</button>
-			</div>
-		</div>
-	
+  <header
+    class="bg-gold-300/5 shadow-sm shadow-gold-300/5 relative border-b h-[50px]"
+  >
+    <div class="py-3 md:grid grid-cols-3 flex justify-between gap-8 container items-center">
+      <div class="gap-8 flex items-center max-md:hidden">
+        <ModeSwitcher />
+        <LangSwitcher />
+      </div>
+      <div class="max-md:w-fit">
+        <Logo />
+      </div>
+      <div v-if="currentUser" class="flex justify-end items-center gap-2 h-full group relative">
+        {{ currentUser.name.split(' ')[0] }} <Icon name="ic:round-logout" size="24" @click="signout" class="cursor-pointer text-error hover:text-red-800 duration-300" />
 
-	</header>
-
-	
-
+      </div>
+    </div>
+  </header>
 </template>
 
 <style scoped></style>

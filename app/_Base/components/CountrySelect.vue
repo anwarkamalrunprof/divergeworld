@@ -60,8 +60,6 @@ function detectLanguage(text: string) {
     return 'Unknown or Mixed'
   }
 }
-consola.info(detectLanguage('اشل'))
-consola.info(detectLanguage('qfwwqf'))
 
 const { value, errorMessage } = props.name
   ? useField(() => fieldName.value, undefined, { syncVModel: true })
@@ -107,7 +105,7 @@ function getFlagForSelectedCountry(selectedCountryName: string) {
 </script>
 
 <template>
-  <div class="grid md:gap-2 gap-1 w-full">
+  <div class="grid  gap-1 w-full">
     <BaseLabel :is-required="isRequired">
       {{ label }}
     </BaseLabel>
@@ -119,7 +117,7 @@ function getFlagForSelectedCountry(selectedCountryName: string) {
       option-label="name"
       :options="locale === 'en' ? countriesEn : countriesAr"
       :filter="haveFilter"
-      class="!w-full !px-3 py-1.5 !rounded-sm !bg-white focus:!border-primary-400 hover:!border-primary-400 !border-2 !duration-300 !shadow-none !h-[53.6px]"
+
       :class="errorMessage ? '!border-error hover:!border-error ' : '!border-secondary-300'"
       :placeholder="placeholder"
       :auto-filter-focus="haveFilter"
@@ -152,4 +150,22 @@ function getFlagForSelectedCountry(selectedCountryName: string) {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(.p-select) {
+  @apply !rounded-md border-2 placeholder:!text-secondary-400 dark:!text-white  w-full p-0.5  !bg-secondary-300 !bg-opacity-20  hover:!border-primary-400 border-secondary-300 focus:!border-primary-400 disabled:hover:!border-secondary-300 !h-[48px];
+}
+:deep(.p-select-label) {
+  @apply dark:!text-white/80 text-black;
+}
+
+:deep(.p-placeholder) {
+  @apply dark:!text-white/40 !text-secondary-500;
+}
+
+:deep(.p-select-option.p-select-option-selected) {
+  @apply !bg-black !text-white;
+}
+:deep(.p-select-dropdown-icon) {
+  @apply text-gold-300 !w-3.5;
+}
+</style>

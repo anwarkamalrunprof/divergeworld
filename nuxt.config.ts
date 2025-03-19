@@ -21,8 +21,8 @@ export default defineNuxtConfig( {
   nitro: {
     imports: {
       dirs: [
-        'shared/types',
-        'shared/utils'
+        'shared/types/index',
+        'shared/utils/**'
       ]
     },
   },

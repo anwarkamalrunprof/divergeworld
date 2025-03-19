@@ -3906,6 +3906,14 @@
     local-pkg "^0.5.0"
     vee-validate "4.15.0"
 
+"@vee-validate/zod@^4.15.0":
+  version "4.15.0"
+  resolved "https://registry.yarnpkg.com/@vee-validate/zod/-/zod-4.15.0.tgz#2de193da114eda9f873b5a677f13c23bcecb58aa"
+  integrity sha512-MpvIKiyg9X5yD8bJW0no2AU7wtR2T5mrvD9tuPRiie951sU2n6QKgMV38qKKOiqFBCxsMSjIuLLLV3V5kVE4nQ==
+  dependencies:
+    type-fest "^4.8.3"
+    vee-validate "4.15.0"
+
 "@vercel/nft@^0.29.2":
   version "0.29.2"
   resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.29.2.tgz#0a852a67f5f24ee7c55139f065d46175688fcbbb"
@@ -6470,6 +6478,11 @@ globby@^14.1.0:
     path-type "^6.0.0"
     slash "^5.1.0"
     unicorn-magic "^0.3.0"
+
+google-libphonenumber@^3.2.40:
+  version "3.2.40"
+  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.40.tgz#ed57d0db67a8745e8e6db7983dda7f94717fb4c9"
+  integrity sha512-bzGxX/vfggcV80LVcibki+JvR91x6zHpBpovDXSfmZUGn6uLzhbYXsWll2a80EG6qTmvf8lt7KZZ/pkMml8ckw==
 
 gopd@^1.2.0:
   version "1.2.0"
@@ -9456,6 +9469,11 @@ safer-buffer@^2.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
+scrollparent@^2.0.1:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/scrollparent/-/scrollparent-2.1.0.tgz#6cae915c953835886a6ba0d77fdc2bb1ed09076d"
+  integrity sha512-bnnvJL28/Rtz/kz2+4wpBjHzWoEzXhVg/TE8BeVGJHUqE8THNIRnDxDWMktwM+qahvlRdvlLdsQfYe+cuqfZeA==
+
 scslre@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/scslre/-/scslre-0.3.0.tgz#c3211e9bfc5547fc86b1eabaa34ed1a657060155"
@@ -10731,6 +10749,16 @@ vue-i18n@^10.0.0, vue-i18n@^10.0.5:
     "@intlify/shared" "10.0.6"
     "@vue/devtools-api" "^6.5.0"
 
+vue-observe-visibility@^0.4.4:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-0.4.6.tgz#878cb8ebcf3078e40807af29774e97105ebd519e"
+  integrity sha512-xo0CEVdkjSjhJoDdLSvoZoQrw/H2BlzB5jrCBKGZNXN2zdZgMuZ9BKrxXDjNP2AxlcCoKc8OahI3F3r3JGLv2Q==
+
+vue-resize@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/vue-resize/-/vue-resize-0.4.5.tgz#4777a23042e3c05620d9cbda01c0b3cc5e32dcea"
+  integrity sha512-bhP7MlgJQ8TIkZJXAfDf78uJO+mEI3CaLABLjv0WNzr4CcGRGPIAItyWYnP6LsPA4Oq0WE+suidNs6dgpO4RHg==
+
 vue-router@^4.5.0, vue-router@latest:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.5.0.tgz#58fc5fe374e10b6018f910328f756c3dae081f14"
@@ -10744,6 +10772,15 @@ vue-sweetalert2@^5.0.11:
   integrity sha512-agujdlcNeLb4Fj0/V3qgR7bEVBN8IzWFoDBP/vrSgbEGl9pjMmxnv32V3lxB0SZtQh6tL6R/UZ+C3q8tzsJbNg==
   dependencies:
     sweetalert2 "11.4.4"
+
+vue-virtual-scroller@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vue-virtual-scroller/-/vue-virtual-scroller-1.1.2.tgz#b8a6362f177abf3f2149ce1eac18013c71fe353b"
+  integrity sha512-SkUyc7QHCJFB5h1Fya7LxVizlVzOZZuFVipBGHYoTK8dwLs08bIz/tclvRApYhksaJIm/nn51inzO2UjpGJPMQ==
+  dependencies:
+    scrollparent "^2.0.1"
+    vue-observe-visibility "^0.4.4"
+    vue-resize "^0.4.5"
 
 vue3-lottie@^3.3.0:
   version "3.3.1"

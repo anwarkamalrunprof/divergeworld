@@ -27,10 +27,6 @@
   --clr-success: 120, 100%, 25%;
   --clr-warning: 42, 100%, 61%;
 
-  /* primeVue */ 
-  --p-select-border-radius: 2px !important;
-  --p-select-option-border-radius: 2px !important;
-  --p-select-overlay-border-radius: 2px !important;
 }
 
 
@@ -43,12 +39,10 @@
   --clr-secondary-500: 0, 0%, 51%;
   --clr-secondary-600: 0, 0%, 20%;
 
-
-
-  --p-select-option-selected-focus-background: hsl(180, 100%, 33%) !important;
-  --p-select-option-selected-background: hsl(180, 100%, 33%) !important;
-  --p-select-placeholder-color: hsl(0, 0%, 51%) !important;
-
+  --p-select-option-selected-focus-background: hsl(180, 100%, 23%) !important;
+  --p-select-option-selected-focus-color: white !important;
+  --p-select-option-selected-background: hsl(180, 100%, 23%) !important;
+  --p-select-option-selected-color: white !important;
 }
 
 /* Dark mode colors */
@@ -58,11 +52,8 @@
   --clr-secondary-400: 0, 0%, 75%;
   --clr-secondary-500: 0, 0%, 84%;
   --clr-secondary-600: 0, 0%, 92%;
-  
-  /* Update PrimeVue colors for dark mode */
-  --p-select-option-selected-focus-background: hsl(180, 100%, 40%) !important;
-  --p-select-option-selected-background: hsl(180, 100%, 40%) !important;
-  --p-select-placeholder-color: hsl(0, 0%, 70%) !important;
+
+  --p-select-overlay-background: hsl(0, 0%, 75%) !important;
 }
 }
 

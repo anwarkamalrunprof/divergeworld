@@ -14,6 +14,7 @@ interface PhoneInputProps {
   needVerification?: boolean
   showIsVerified?: boolean
   code?: string
+  validate?: boolean
   countryKey?: string
   isRequired?: boolean
   isValid?: boolean
@@ -25,11 +26,14 @@ interface PhoneInputProps {
   showVerificationMark?: boolean
   forcePhoneVerify?: boolean
   phoneLogin?: boolean
+  name?: string
+  withPlus?: boolean
   afterPhoneLinkingFn?: () => unknown
 }
 const props = withDefaults(defineProps<PhoneInputProps>(), {
-  code: 'EG',
-  countryKey: '+20',
+  code: 'AE',
+  countryKey: '971',
+  validate: false,
   needVerification: false,
   showIsVerified: false,
   isRequired: false,
@@ -42,6 +46,9 @@ const props = withDefaults(defineProps<PhoneInputProps>(), {
   showVerificationMark: true,
   forcePhoneVerify: false,
   phoneLogin: false,
+  label: 'PhoneNumber',
+  name: '',
+  withPlus: false,
 })
 const emit = defineEmits([
   'update:modelValue',
@@ -49,11 +56,22 @@ const emit = defineEmits([
   'update:isValid',
   'update:code',
   'update:isChanged',
+  'fullNumber',
 ])
-const { locale, t } = useI18n()
+
+const fieldName = computed(() => props.name || `field-${Date.now()}`)
+const { value, errorMessage } = props.name
+  ? useField(() => fieldName.value, undefined, { syncVModel: true, validateOnMount: false })
+  : { value: ref(''), errorMessage: ref('') }
+
+const _error = computed(() => {
+  return errorMessage.value === '' ? props.error : errorMessage.value
+})
+
+const { locale } = useI18n()
 // Reactive models with improved type handling
 const code = defineModel<string>('code', {
-  default: 'EG',
+  default: 'AE',
   set: (value: string) => value.toUpperCase(),
 })
 const phoneNumber = defineModel<string>('modelValue', {
@@ -63,11 +81,10 @@ const phoneNumber = defineModel<string>('modelValue', {
 // Computed country calling code
 const countryCallingCode = computed(() => {
   const newCountryKey = getCountryCallingCode(code.value?.toUpperCase() as CountryCode)
-  emit('update:countryKey', `+${newCountryKey}`)
-  return `+${newCountryKey}`
+  emit('update:countryKey', newCountryKey)
+  return newCountryKey
 })
 // Phone number validation
-const errorMessage = ref('')
 const validNumber = ref(true)
 const phoneInstance = googleLibPhone.PhoneNumberUtil.getInstance()
 // Maximum length calculation
@@ -83,7 +100,7 @@ watch(
       if (!phoneNumber.value?.trim()) {
         validNumber.value = true
         errorMessage.value = ''
-        // emit('update:isValid', true)
+        emit('update:isValid', true)
         return
       }
       // Validate phone number
@@ -92,12 +109,20 @@ watch(
       emit('update:isValid', isValid)
       errorMessage.value = isValid
         ? ''
-        : t('phone-number-must-be-in-a-valid-format')
+        : 'Phone Number Must be in a valid format'
       validNumber.value = isValid
+      emit('fullNumber', phoneInstance.format(number, googleLibPhone.PhoneNumberFormat.E164))
+      isValid
+        ? (value.value = props.withPlus
+            ? phoneInstance.format(number, googleLibPhone.PhoneNumberFormat.E164)
+            : phoneInstance
+                .format(number, googleLibPhone.PhoneNumberFormat.E164)
+                .replace(/^\+/, ''))
+        : (value.value = '')
     }
     catch (error) {
-      consola.warn(error)
-      errorMessage.value = t('phone-number-must-be-in-a-valid-format')
+      console.warn(error)
+      errorMessage.value = 'Phone Number Must be in a valid format'
       validNumber.value = false
       emit('update:isValid', false)
     }
@@ -114,8 +139,7 @@ function validateNumberInput(event: Event): void {
   input.value = input.value.replace(/\D/g, '').slice(0, maxPhoneLength.value)
   phoneNumber.value = input.value
 }
-// Computed error handling
-const _error = computed(() => props.error || errorMessage.value)
+
 // Country selection options
 const countryOptions = computed(() =>
   locale.value === 'en' ? countriesEn : countriesAr,
@@ -123,17 +147,17 @@ const countryOptions = computed(() =>
 </script>
 
 <template>
-  <div class="grid md:gap-2 gap-1 w-full">
+  <div class="grid md:gap-2 gap-1 w-full rounded-lg">
     <BaseLabel
       :is-required="isRequired"
       :show-requirement="showRequirement"
       :disabled="disabled"
     >
-      {{ useT("phoneNumber") }}
+      {{ props.label }}
     </BaseLabel>
     <div
       dir="ltr"
-      class="flex items-center gap-1 md:gap-3 border-2 hover:!border-primary-400 duration-300 relative h-[54px] overflow-clip focus-within:border-gold min-w-0"
+      class="flex items-center gap-1 md:gap-3 border-2 hover:!border-primary-400 duration-300 relative h-[48px] overflow-clip focus-within:border-primary-400 min-w-0 rounded-md"
       :class="{
         '!border-error hover:!border-primary-400 duration-300': _error,
       }"
@@ -166,16 +190,16 @@ const countryOptions = computed(() =>
         </template>
         <template #value="{ value }">
           <template v-if="!value" />
-          <div v-else class="flex items-center justify-center lg:gap-2">
+          <div v-else class="flex items-center justify-center lg:gap-2 min-w-10 -me-3">
             <img
               :src="flags[value.toLowerCase() as keyof typeof flags]"
               class="size-5"
             >
             <span
-              class="max-w-[30px] lg:max-w-[50px] truncate block text-foreground"
+              class=" lg:max-w-[50px] truncate block text-foreground"
               :class="{ 'text-baseGray': disabled }"
             >
-              {{ countryCallingCode }}
+              +{{ countryCallingCode }}
             </span>
           </div>
         </template>
@@ -193,4 +217,22 @@ const countryOptions = computed(() =>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(.p-select) {
+  @apply !rounded-md border-2 placeholder:!text-secondary-400 dark:!text-white   p-0.5  !bg-secondary-300 !bg-opacity-20  hover:!border-primary-400 border-secondary-300 focus:!border-primary-400 disabled:hover:!border-secondary-300 !h-[48px];
+}
+:deep(.p-select-label) {
+  @apply dark:!text-white/80 text-black;
+}
+
+:deep(.p-placeholder) {
+  @apply dark:!text-white/40 !text-secondary-500;
+}
+
+:deep(.p-select-option.p-select-option-selected) {
+  @apply !bg-black !text-white;
+}
+:deep(.p-select-dropdown-icon) {
+  @apply text-gold-300 !w-3.5;
+}
+</style>

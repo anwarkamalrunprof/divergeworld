@@ -5,8 +5,8 @@ const { localeProperties } = useI18n()
 <template>
   <Html :lang=" localeProperties.code " :dir=" localeProperties.direction ">
     <Body class="bg-zinc-100 dark:bg-secondary-200 dark:text-zinc-100 text-secondary-600">
+      <NuxtLoadingIndicator color="#FEFCE8" />
       <NuxtLayout>
-        <NuxtLoadingIndicator color="#FEFCE8" />
         <NuxtPage />
       </NuxtLayout>
     </Body>

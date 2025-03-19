@@ -81,7 +81,6 @@ export default {
         },
         body: {
           "line-height": "1.5",
-          fontSize: theme( "fontSize.300" ),
         },
       } )
       addComponents( {

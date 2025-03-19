@@ -3,9 +3,9 @@
 </script>
 
 <template>
-	<div>
- error 
-	</div>
+  <main>
+    <UserForm btn-text="Edit" edit />
+  </main>
 </template>
 
 <style scoped>
