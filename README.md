@@ -74,3 +74,23 @@ using no sql mongodb clusters to store the data
 ##### i get this error in 16/3/2025 "index.js:5"
 
  Uncaught SyntaxError: The requested module '/_nuxt/@fs/E:/programing/baseNuxt4/node_modules/unhead/dist/index.mjs?v=1dcb5680' does not provide an export named 'getActiveHead' (at index.js:5:10) " and that because i18n unstable release  link of issue https://github.com/nuxt/nuxt/issues/31265
+
+
+Questions 
+1. How would you optimize API calls in this application for performance?
+using pagination - loading statemnt - prefetch - cache response you will find reuseabel composable useFetchWithCach used to store res in session 
+
+2. Describe your approach to handling shared logic between components.
+using props or slots in first creation make it accept modification with easy way and when need more fetures implement it based on props or route path or meta route in some cases  
+
+3. How would you implement client-side data caching for this dashboard?
+session or local storage be fine and when call again check if alredy key to this call retrieve response and return befor the call
+
+4. What strategy would you use to scale this application if it needed to support hundreds of different user permission types?
+fragments - .d.ts fils for more reusabel and needed types - also seperate the type file to related componenet or page or composable will make it easer
+
+5. Explain your testing strategy and how you decided what to test.
+forms and if conditions  alwayes need testing but in this project there was no time for test 
+
+6. How would you handle offline capabilities in this application?
+PWA stratigies (service workser) or workbox or local storage as in step 1 and 3 
