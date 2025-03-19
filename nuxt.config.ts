@@ -82,13 +82,11 @@ export default defineNuxtConfig( {
       {
         code: "en",
         name: "English",
-        file: "./en.json",
         direction: "ltr",
       },
       {
         code: "ar",
         name: "عربي",
-        file: "./ar.json",
         direction: "rtl",
       },
     ],
