@@ -158,7 +158,7 @@ definePageMeta({
     <!-- User List (Virtual Scrolling) -->
     <div v-if="userList.length" class="card__grid__layout grow content-start">
       <UserCard
-        v-for="(user, index) in userList"
+        v-for="(user) in userList"
         :key="user._id"
         :user="user"
         :delete-user="deleteUser"

@@ -9,8 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class=" flex items-center gap-3  border-2 border-primary-300/25 p-3 mt-7 bg-white dark:bg-secondary-300/30 rounded-lg shadow relative " :class="loading ?'opacity-50 animate-pulse' : ''">
-
+  <div class=" flex items-center gap-3  border-2 border-primary-300/25 p-3 mt-7 bg-white dark:bg-secondary-300/30 rounded-lg shadow relative " :class="loading ? 'opacity-50 animate-pulse' : ''">
     <Icon :name="user.status === 'Active' ? 'nrk:check-active' : 'nrk:close-active'" class=" absolute end-2 top-2 text-500" :class="user.status === 'Active' ? 'text-success' : 'text-error'" />
     <div class=" grid place-content-center place-items-center gap-4 border-e-2 pe-2">
       <NuxtImg :src="user.profileImage" width="50" height="50" alt="user image" class=" size-24 rounded-full border-[3px] border-t-gold-300/50 drop-shadow-sm border-primary-300 -mt-7 bg-white object-contain" />

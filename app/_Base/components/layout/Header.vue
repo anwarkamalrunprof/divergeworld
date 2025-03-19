@@ -16,8 +16,7 @@ const { signout } = useAuth()
         <Logo />
       </div>
       <div v-if="currentUser" class="flex justify-end items-center gap-2 h-full group relative">
-        {{ currentUser.name.split(' ')[0] }} <Icon name="ic:round-logout" size="24" @click="signout" class="cursor-pointer text-error hover:text-red-800 duration-300" />
-
+        {{ currentUser.name.split(' ')[0] }} <Icon name="ic:round-logout" size="24" class="cursor-pointer text-error hover:text-red-800 duration-300" @click="signout" />
       </div>
     </div>
   </header>

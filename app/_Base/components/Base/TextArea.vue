@@ -88,7 +88,7 @@ const { value, errorMessage } = props.name
 </template>
 
 <style scoped>
-	textarea {
+textarea {
   @apply border !border-secondary-300 !bg-white !rounded-sm p-3  hover:!border-primary-400 focus:border-primary-400 duration-300 placeholder:!text-secondary-500;
 }
 textarea:focus,

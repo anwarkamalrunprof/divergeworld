@@ -66,7 +66,7 @@ const LINE_HEIGHT_CLASSES: Record<Size, string> = {
 }
 
 const classes = computed(() => {
-  const size = props.size as Size;
+  const size = props.size as Size
   const baseClasses = [
     LINE_HEIGHT_CLASSES[size],
     WEIGHT_CLASSES[props.weight as Weight],
